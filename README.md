@@ -1,1 +1,1 @@
-# AIDevelopmnt
+# AIDevelopment
