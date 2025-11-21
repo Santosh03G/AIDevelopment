@@ -1,157 +1,172 @@
-/* --- 1. SAAZVAT THEME BASE --- */
+/* =========================================
+   1. WEBSITE BASE STYLES
+   ========================================= */
 body, html {
     height: 100%;
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #F4F6F7; /* Dashboard Light Gray */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color: #f4f4f4;
 }
 
+.website-header {
+    background-color: #A82227; /* Saazvat Red */
+    color: white;
+    padding: 20px 50px;
+    display: flex; justify-content: space-between; align-items: center;
+}
+.website-header nav a { color: white; margin-left: 20px; text-decoration: none; font-weight: 500; }
+.website-content { padding: 50px; text-align: center; color: #333; }
+
+
+/* =========================================
+   2. CHAT WIDGET LAYOUT
+   ========================================= */
+
+/* --- UPDATED: Toggle Button with Image --- */
+.chat-btn {
+    position: fixed; bottom: 30px; right: 30px;
+    background-color: #A82227; color: white; border: none; 
+    padding: 10px 20px; /* Adjusted padding for image */
+    border-radius: 30px; font-size: 16px; font-weight: bold;
+    cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.3s, background 0.3s; z-index: 9998;
+    display: flex; align-items: center; gap: 12px; /* Space between img and text */
+}
+.chat-btn:hover { transform: scale(1.05); background-color: #8B1D21; }
+
+/* New Class for the Bot Image inside button */
+.btn-icon {
+    width: 35px; height: 35px; 
+    border-radius: 50%; /* Circle shape */
+    object-fit: cover;
+    background-color: white; /* White background makes logo pop */
+    padding: 2px; /* Small border effect */
+}
+
+/* --- MAIN CONTAINER --- */
 .chat-container {
-    width: 400px;
-    height: 600px;
+    position: fixed; 
+    bottom: 100px; right: 30px; width: 350px; 
+    height: 500px !important; 
     background-color: #ffffff;
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    border-top: 5px solid #A82227; /* Saazvat Red Top Border */
+    box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+    overflow: hidden; display: none; 
+    border-top: 5px solid #A82227; z-index: 9999;
 }
 
-/* Header */
+/* --- HEADER --- */
 .chat-header {
-    background-color: #A82227; /* Saazvat Red */
-    padding: 15px;
-    display: flex;
-    align-items: center;
-    color: white;
-    border-bottom: 3px solid #8B1D21;
+    position: absolute; top: 0; left: 0; width: 100%; height: 60px;
+    background-color: #A82227; padding: 0 15px; box-sizing: border-box;
+    display: flex; align-items: center; color: white; border-bottom: 3px solid #8B1D21; z-index: 20;
 }
+.logo i { font-size: 20px; margin-right: 10px; background: white; color: #A82227; padding: 8px; border-radius: 50%; }
+.title h3 { margin: 0; font-size: 16px; font-weight: 600; text-transform: uppercase; }
+.title p { margin: 0; font-size: 11px; opacity: 0.9; }
+#close-chat { margin-left: auto; background: none; border: none; color: white; font-size: 20px; cursor: pointer; }
 
-.logo i {
-    font-size: 25px;
-    margin-right: 15px;
-    background: white;
-    color: #A82227;
-    padding: 10px;
-    border-radius: 50%;
-}
-
-.title h3 { margin: 0; font-size: 18px; font-weight: 600; text-transform: uppercase; }
-.title p { margin: 0; font-size: 12px; opacity: 0.9; }
-
-/* Chat Body */
+/* --- MESSAGE BODY --- */
 .msg_card_body {
-    flex: 1;
-    overflow-y: auto;
-    padding: 20px;
+    position: absolute; top: 60px; bottom: 70px; width: 100%;
+    overflow-y: auto; padding: 15px; box-sizing: border-box;
     background-color: #ffffff;
     background-image: radial-gradient(#e5e5e5 1px, transparent 1px);
     background-size: 20px 20px;
 }
-.msg_card_body::-webkit-scrollbar { width: 6px; }
+.msg_card_body::-webkit-scrollbar { width: 5px; }
 .msg_card_body::-webkit-scrollbar-thumb { background: #ccc; border-radius: 10px; }
 
-/* Messages */
-.d-flex { display: flex; margin-bottom: 15px; }
-.justify-content-end { justify-content: flex-end; }
-.justify-content-start { justify-content: flex-start; }
-
-.msg_cotainer {
-    max-width: 75%;
-    padding: 10px 15px;
-    border-radius: 5px;
-    word-wrap: break-word;
-    font-size: 14px;
-    line-height: 1.5;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+/* --- FOOTER --- */
+.card-footer {
+    position: absolute; bottom: 0; left: 0; width: 100%; height: 70px;
+    padding: 10px; box-sizing: border-box; background-color: #f8f9fa; border-top: 1px solid #e9ecef; z-index: 20;
 }
-
-/* User = Red */
-.msg_cotainer_send {
-    background-color: #A82227; 
-    color: white;
-    border-bottom-right-radius: 0;
-}
-
-/* Bot = Navy */
-.msg_cotainer_receive {
-    background-color: #1B2631; 
-    color: white;
-    border-bottom-left-radius: 0;
-}
-
-/* Footer */
-.card-footer { padding: 10px; background-color: #f8f9fa; border-top: 1px solid #e9ecef; }
 .input-group {
-    display: flex;
-    align-items: center;
-    background: #ffffff;
-    border: 1px solid #ced4da;
-    border-radius: 30px;
-    padding: 5px 10px;
+    display: flex; align-items: center; background: #ffffff;
+    border: 1px solid #ced4da; border-radius: 30px; padding: 5px 10px; height: 40px;
 }
-.form-control { border: none; background: transparent; flex: 1; padding: 10px; outline: none; color: #495057; }
+.form-control { border: none; background: transparent; flex: 1; padding: 5px; outline: none; color: #495057; font-size: 14px; }
 .send_btn {
     border: none; background-color: #1B2631; color: white; border-radius: 50%;
-    width: 40px; height: 40px; cursor: pointer; display: flex;
+    width: 35px; height: 35px; cursor: pointer; display: flex;
     align-items: center; justify-content: center; transition: background 0.3s;
 }
 .send_btn:hover { background-color: #A82227; }
 
-/* Chat Images (Thumbnail) */
+
+/* =========================================
+   3. BUBBLES & ANIMATION
+   ========================================= */
+.d-flex { display: flex; margin-bottom: 10px; }
+.justify-content-end { justify-content: flex-end; }
+.justify-content-start { justify-content: flex-start; }
+
+.msg_cotainer {
+    max-width: 80%; padding: 8px 12px; border-radius: 5px;
+    word-wrap: break-word; font-size: 13px; line-height: 1.4;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+.msg_cotainer_send { background-color: #A82227; color: white; border-bottom-right-radius: 0; }
+.msg_cotainer_receive { background-color: #1B2631; color: white; border-bottom-left-radius: 0; }
+
 .chat-img {
-    max-width: 100%; border-radius: 5px; margin-top: 10px;
-    border: 3px solid #A82227; cursor: pointer; transition: 0.3s;
+    max-width: 100%; border-radius: 5px; margin-top: 5px;
+    border: 2px solid #A82227; cursor: pointer; transition: 0.3s;
 }
 .chat-img:hover { opacity: 0.8; }
 
-/* --- 2. MODAL & ZOOM STYLES --- */
+.typing_loader {
+    width: 50px; height: 15px; background-color: #1B2631;
+    border-radius: 50px; display: flex; align-items: center; justify-content: center;
+    padding: 5px 10px; border-bottom-left-radius: 0; 
+}
+.typing_loader .dot {
+    height: 6px; width: 6px; background-color: #ffffff; border-radius: 50%;
+    margin: 0 2px; opacity: 0.6; animation: bounce 1.5s infinite ease-in-out;
+}
+.typing_loader .dot:nth-child(1) { animation-delay: 0s; }
+.typing_loader .dot:nth-child(2) { animation-delay: 0.2s; }
+.typing_loader .dot:nth-child(3) { animation-delay: 0.4s; }
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); opacity: 0.6; }
+    50% { transform: translateY(-4px); opacity: 1; }
+}
+.typing_text {
+    font-size: 10px; color: #888; margin-left: 5px; margin-top: 2px;
+    font-style: italic; opacity: 0.7; animation: pulseText 1.5s infinite ease-in-out;
+}
+@keyframes pulseText { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
+
+
+/* =========================================
+   4. MODAL & ZOOM
+   ========================================= */
 .modal {
-    display: none; 
-    position: fixed; 
-    z-index: 1000; 
+    display: none; position: fixed; z-index: 10000; 
     left: 0; top: 0; width: 100%; height: 100%; 
-    background-color: rgba(0,0,0,0.9); 
-    overflow: hidden; /* No window scrollbars */
+    background-color: rgba(0,0,0,0.9); overflow: hidden; 
 }
-
 .modal-content-container {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden; /* Clips the image when zoomed out of view */
+    width: 100%; height: 100%; display: flex;
+    justify-content: center; align-items: center; overflow: hidden; 
 }
-
 .modal-content {
-    max-width: 90%;
-    max-height: 90%;
-    object-fit: contain;
-    transform-origin: center center;
-    cursor: grab; /* Indicates dragging is possible */
-    transition: transform 0.1s ease-out; /* Smooth zoom effect */
+    max-width: 90%; max-height: 90%; object-fit: contain;
+    transform-origin: center center; cursor: grab; transition: transform 0.1s ease-out; 
 }
 .modal-content:active { cursor: grabbing; }
-
 .zoom-controls {
     position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
-    z-index: 1001; display: flex; gap: 15px;
+    z-index: 10001; display: flex; gap: 15px;
 }
-
 .zoom-controls button {
     background: rgba(255, 255, 255, 0.2); border: 1px solid white; color: white;
     font-size: 18px; padding: 10px 15px; border-radius: 50%; cursor: pointer; transition: 0.2s;
 }
 .zoom-controls button:hover { background: #A82227; border-color: #A82227; }
-
 .close {
     position: absolute; top: 20px; right: 35px; color: #f1f1f1;
-    font-size: 40px; font-weight: bold; transition: 0.3s; z-index: 1002;
+    font-size: 40px; font-weight: bold; transition: 0.3s; z-index: 10002;
 }
 .close:hover, .close:focus { color: #A82227; cursor: pointer; }
