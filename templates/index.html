@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Saazvat Assistant</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=5">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=10">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
@@ -26,7 +26,7 @@
 
 
     <button class="chat-btn" id="chat-toggle-btn">
-        <img src="{{ url_for('static', filename='Img/bot_icon.png') }}" class="btn-icon" alt="Bot">
+        <img src="{{ url_for('static', filename='images/bot_icon.png') }}" class="btn-icon" alt="Bot">
         Ask SzAi
     </button>
 
@@ -34,10 +34,11 @@
         
         <div class="chat-header">
             <div class="logo">
-                <i class="fa-solid fa-robot"></i>
+                <img src="{{ url_for('static', filename='images/bot_icon.png') }}" class="btn-icon" alt="Bot">
             </div>
             <div class="title">
-                <h3>SzAi Assistant</h3> <p>Online | HR Support</p>
+                <h3>SzAi</h3>
+                <p><span class="online-dot"></span> Online | HR Support</p>
             </div>
             <button id="close-chat" title="Close Chat">
                 <i class="fa-solid fa-times"></i>
@@ -62,9 +63,9 @@
     <div id="imageModal" class="modal">
         <span class="close">&times;</span>
         <div class="zoom-controls">
-            <button onclick="zoomOut()"><i class="fas fa-minus"></i></button>
-            <button onclick="zoomIn()"><i class="fas fa-plus"></i></button>
-            <button onclick="resetZoom()"><i class="fas fa-compress"></i></button>
+            <button onclick="zoomOut()" title="Zoom Out"><i class="fas fa-minus"></i></button>
+            <button onclick="zoomIn()" title="Zoom In"><i class="fas fa-plus"></i></button>
+            <button onclick="resetZoom()" title="Reset"><i class="fas fa-compress"></i></button>
         </div>
         <div class="modal-content-container">
             <img class="modal-content" id="img01">

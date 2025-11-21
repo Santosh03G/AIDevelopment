@@ -22,25 +22,26 @@ body, html {
    2. CHAT WIDGET LAYOUT
    ========================================= */
 
-/* --- UPDATED: Toggle Button with Image --- */
+/* --- TOGGLE BUTTON --- */
 .chat-btn {
     position: fixed; bottom: 30px; right: 30px;
     background-color: #A82227; color: white; border: none; 
-    padding: 10px 20px; /* Adjusted padding for image */
+    padding: 10px 20px 10px 15px; 
     border-radius: 30px; font-size: 16px; font-weight: bold;
     cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     transition: transform 0.3s, background 0.3s; z-index: 9998;
-    display: flex; align-items: center; gap: 12px; /* Space between img and text */
+    display: flex; align-items: center; gap: 10px;
 }
 .chat-btn:hover { transform: scale(1.05); background-color: #8B1D21; }
 
-/* New Class for the Bot Image inside button */
+/* IMAGE STYLE */
 .btn-icon {
-    width: 35px; height: 35px; 
-    border-radius: 50%; /* Circle shape */
-    object-fit: cover;
-    background-color: white; /* White background makes logo pop */
-    padding: 2px; /* Small border effect */
+    width: 35px; 
+    height: 35px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    background-color: white; 
+    padding: 2px; 
 }
 
 /* --- MAIN CONTAINER --- */
@@ -61,10 +62,25 @@ body, html {
     background-color: #A82227; padding: 0 15px; box-sizing: border-box;
     display: flex; align-items: center; color: white; border-bottom: 3px solid #8B1D21; z-index: 20;
 }
-.logo i { font-size: 20px; margin-right: 10px; background: white; color: #A82227; padding: 8px; border-radius: 50%; }
+
+.chat-header .logo { margin-right: 15px; display: flex; align-items: center; }
+
 .title h3 { margin: 0; font-size: 16px; font-weight: 600; text-transform: uppercase; }
-.title p { margin: 0; font-size: 11px; opacity: 0.9; }
+.title p { margin: 0; font-size: 11px; opacity: 0.9; display: flex; align-items: center; }
+
+/* --- NEW: GREEN ONLINE DOT --- */
+.online-dot {
+    height: 8px;
+    width: 8px;
+    background-color: #2ecc71; /* Bright Green */
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+    box-shadow: 0 0 5px rgba(46, 204, 113, 0.8); /* Glowing effect */
+}
+
 #close-chat { margin-left: auto; background: none; border: none; color: white; font-size: 20px; cursor: pointer; }
+
 
 /* --- MESSAGE BODY --- */
 .msg_card_body {
