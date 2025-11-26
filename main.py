@@ -9,10 +9,9 @@ import json
 import pickle
 import os
 
-# Initialize Stemmer
 stemmer = LancasterStemmer()
 
-# Download tokenizer if needed
+# Ensure tokenizer is downloaded
 try:
     nltk.data.find('tokenizers/punkt')
 except LookupError:
@@ -22,14 +21,19 @@ except LookupError:
 with open("intents.json") as file:
     data = json.load(file)
 
-# --- 1. Data Processing ---
 try:
-    # LOAD DATA: Must use "rb" (Read Binary)
+    # 1. Try to load the processed data
     with open("data.pickle", "rb") as f:
         words, labels, training, output = pickle.load(f)
-    print("Data loaded from pickle.")
-except:
-    print("Processing data from scratch...")
+    
+    # 2. CRITICAL FIX: Load the saved model if data exists
+    model = load_model("chatbot_model.keras")
+    print("Data and Model loaded successfully.")
+
+except Exception as e:
+    print(f"Could not load saved data/model: {e}")
+    print("Training model from scratch...")
+    
     words = []
     labels = []
     docs_x = []
@@ -51,13 +55,11 @@ except:
 
     training = []
     output = []
-
     out_empty = [0 for _ in range(len(labels))]
 
     for x, doc in enumerate(docs_x):
         bag = []
         wrds = [stemmer.stem(w.lower()) for w in doc]
-
         for w in words:
             if w in wrds:
                 bag.append(1)
@@ -73,17 +75,11 @@ except:
     training = np.array(training)
     output = np.array(output)
 
-    # SAVE DATA: Must use "wb" (Write Binary)
+    # Save Data
     with open("data.pickle", "wb") as f:
         pickle.dump((words, labels, training, output), f)
 
-# --- 2. Model Training / Loading ---
-# If the model file exists, load it. Otherwise, train a new one.
-if os.path.exists("chatbot_model.keras"):
-    print("Loading existing model...")
-    model = load_model("chatbot_model.keras")
-else:
-    print("Building and training new model...")
+    # Build Model
     model = Sequential()
     model.add(Dense(128, input_shape=(len(training[0]),), activation='relu'))
     model.add(Dropout(0.5))
@@ -94,10 +90,12 @@ else:
     sgd = tf.keras.optimizers.SGD(learning_rate=0.01, momentum=0.9, nesterov=True)
     model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
 
+    # Train and Save Model
     model.fit(training, output, epochs=200, batch_size=5, verbose=1)
     model.save("chatbot_model.keras")
 
-# --- 3. Helper Functions ---
+# --- Helper Functions ---
+
 def bag_of_words(s, words):
     bag = [0 for _ in range(len(words))]
     s_words = nltk.word_tokenize(s)
@@ -110,10 +108,7 @@ def bag_of_words(s, words):
     return np.array(bag)
 
 def get_response(msg):
-    """
-    Returns a tuple: (text_response, image_path_or_None)
-    """
-    # Prepare input: Reshape to (1, len(words)) for batch processing
+    # Prepare input
     input_data = np.array([bag_of_words(msg, words)])
     
     # Predict
@@ -121,14 +116,15 @@ def get_response(msg):
     results_index = np.argmax(results)
     tag = labels[results_index]
     
-    # Threshold for confidence (0.7 = 70%)
+    # Confidence Threshold
     if results[0][results_index] > 0.7:
         for tg in data["intents"]:
             if tg['tag'] == tag:
                 responses = tg['responses']
-                # Check if this intent has an image associated with it
-                img_path = tg.get('context_image') 
-                return random.choice(responses), img_path
+                img_path = tg.get('context_image')
+                video_path = tg.get('context_video') # Added video support
+                suggestions = tg.get('suggestions', [])
+                
+                return random.choice(responses), img_path, video_path, suggestions
     
-    # Fallback response (Text, None)
-    return "I didn't understand that. Can you try again?", None
+    return "I didn't understand that. Can you try again?", None, None, []

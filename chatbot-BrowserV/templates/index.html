@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saazvat Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=10">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="website-header">
+        <h2>SAAZVAT <span style="font-size: 14px; font-weight: normal;">Exceeding Expectations</span></h2>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">About Us</a>
+            <a href="#">Services</a>
+            <a href="#">Contact</a>
+        </nav>
+    </div>
+    <div class="website-content">
+        <h1>Welcome to Saazvat</h1>
+        <p>We provide world-class IT Infrastructure and Quality services.</p>
+        <p>Click the button below to chat with our HR Assistant.</p>
+    </div>
+
+
+    <button class="chat-btn" id="chat-toggle-btn">
+        <img src="{{ url_for('static', filename='images/bot_icon.png') }}" class="btn-icon" alt="Bot">
+        Ask SzAi
+    </button>
+
+    <div class="chat-container" id="chat-box">
+        
+        <div class="chat-header">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/bot_icon.png') }}" class="btn-icon" alt="Bot">
+            </div>
+            <div class="title">
+                <h3>SzAi</h3>
+                <p><span class="online-dot"></span> Online | HR Support</p>
+            </div>
+            <button id="close-chat" title="Close Chat">
+                <i class="fa-solid fa-times"></i>
+            </button>
+        </div>
+
+        <div id="messageFormeight" class="msg_card_body">
+            </div>
+
+        <div class="card-footer">
+            <form id="messageArea" class="input-group">
+                <input type="text" id="text" name="msg" placeholder="Type your message..." autocomplete="off" class="form-control" required/>
+                <div class="input-group-append">
+                    <button type="submit" id="send" class="input-group-text send_btn">
+                        <i class="fas fa-location-arrow"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <div class="zoom-controls">
+            <button onclick="zoomOut()" title="Zoom Out"><i class="fas fa-minus"></i></button>
+            <button onclick="zoomIn()" title="Zoom In"><i class="fas fa-plus"></i></button>
+            <button onclick="resetZoom()" title="Reset"><i class="fas fa-compress"></i></button>
+        </div>
+        <div class="modal-content-container">
+            <img class="modal-content" id="img01">
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "Hi",
+        "How are you",
+        "Is anyone there?",
+        "Hello",
+        "Good morning",
+        "Hey there"
+      ],
+      "responses": [
+        "Hello! How can I assist you with your HR queries today?",
+        "Hi there, welcome to the HR Dashboard. How can I help?",
+        "Good day! I am your HR assistant. What do you need help with?"
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "Bye",
+        "See you later",
+        "Goodbye",
+        "I am done",
+        "Thank you, bye"
+      ],
+      "responses": [
+        "See you later, have a productive day!",
+        "Goodbye! Don't forget to log out of the dashboard.",
+        "Talk to you later!"
+      ]
+    },
+    {
+      "tag": "payroll_query",
+      "patterns": [
+        "When will I get paid?",
+        "Where is my payslip?",
+        "I want to see my salary slip",
+        "Payroll dates",
+        "Download payslip"
+      ],
+      "responses": [
+        "Salaries are credited on the last working day of the month. You can download your payslips under the 'Payroll' tab on the dashboard.",
+        "Please navigate to the 'My Pay' section to view and download your latest payslips."
+      ]
+    },
+    {
+      "tag": "leave_application",
+      "patterns": [
+        "How do I apply for leave?",
+        "I need a holiday",
+        "Applying for sick leave",
+        "Where is the leave request button?",
+        "I want to take a day off"
+      ],
+      "responses": [
+        "To apply for leave, click on the 'Time Off' widget on your dashboard and select 'New Request' Please refer the link : https://www.greythr.com/.",
+        "You can apply for Sick or Casual leave via the 'Leave Management' section in the main menu Please refer the link : https://www.greythr.com/."
+      ],"context_image": "images/leave.png"
+    },
+    {
+      "tag": "leave_balance",
+      "patterns": [
+        "How many leaves do I have left?",
+        "Check my leave balance",
+        "Do I have any sick days remaining?",
+        "What is my vacation balance?"
+      ],
+      "responses": [
+        "Your current leave balance is displayed on the top right corner of your dashboard homepage.",
+        "Please check the 'Leave Balance' card on the dashboard for real-time updates on your remaining days."
+      ]
+    },
+    {
+      "tag": "password_reset",
+      "patterns": [
+        "I forgot my password",
+        "How to change my password?",
+        "I cannot login",
+        "Reset password"
+      ],
+      "responses": [
+        "You can reset your password by clicking 'Profile Settings' -> 'Security' -> 'Change Password'.",
+        "If you are locked out, please use the 'Forgot Password' link on the main login screen."
+      ]
+    },
+    {
+      "tag": "insurance_benefits",
+      "patterns": [
+        "What is my health insurance policy?",
+        "Do I have dental coverage?",
+        "View my benefits",
+        "Insurance details"
+      ],
+      "responses": [
+        "You can view your active insurance plans and benefits under the 'My Benefits' tab.",
+        "Details regarding your health and medical insurance are available in the 'Policy Documents' section."
+      ]
+    },
+    {
+      "tag": "hr_contact",
+      "patterns": [
+        "I need to talk to a human",
+        "Who is the HR manager?",
+        "Contact HR support",
+        "I have a complaint"
+      ],
+      "responses": [
+        "You can reach the HR team at hr-support@company.com.",
+        "For sensitive matters, please schedule a one-on-one with your HR."
+      ]
+    }
+  ]
+}
