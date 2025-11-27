@@ -26,24 +26,85 @@
       "suggestions": ["Check leave balance", "Leave approval status"]
     },
     {
+      "tag": "leave_status",
+      "patterns": [
+        "Leave approval status",
+        "Is my leave approved?",
+        "Check leave status",
+        "Track leave application"
+      ],
+      "responses": [
+        "To check your leave status:\n1. Go to **Leave > Leave Information > My Leave**.\n2. Look at the **Status** column to see if it is **Pending**, **Approved**, or **Rejected**."
+      ],
+      "suggestions": ["Cancel leave", "Check leave balance"]
+    },
+    {
       "tag": "apply_od",
       "patterns": ["how to apply od", "apply for on duty", "regularize attendance"],
-      "responses": ["To apply for OD:\n1. Go to **Attendance > Regularization**.\n2. Select the **Date**.\n3. Select **On Duty** in the Reason field and click **Apply**."],
+      "responses": ["To apply for OD:\n1. Go to **Attendance > Regularization**.\n2. Select the **Date**.\n3. Select **On Duty** in the Reason field.\n4. Click **Apply**."],
       "suggestions": ["Check leave balance", "How to apply leave?"]
     },
     {
       "tag": "download_payslip",
       "patterns": ["how to download payslip", "where is my salary slip"],
       "responses": ["To download your payslip:\n1. Navigate to **Salary > Payslips**.\n2. Select the **Month**.\n3. Click the **Download** icon."],
-      "context_image": "/images/download_payslip.png",
-      "suggestions": ["Tax Declaration", "Check Leave Balance"]
+      "context_image": "images/download_payslip.png",
+      "suggestions": ["Check Leave Balance"]
     },
     {
       "tag": "check_leave_balance",
       "patterns": ["check leave balance", "my leave balance"],
-      "responses": ["Go to **Leave > Balances** to see your Available, Consumed, and Granted leaves."],
-      "context_image": "/images/leave_balance.png",
-      "suggestions": ["Apply Leave", "Leave Status"]
+      "responses": ["To check your balance:\n1. Go to **Leave > Balances**.\n2. View your **Available**, **Consumed**, and **Granted** leaves."],
+      "context_image": "images/leave_balance.png",
+      "suggestions": ["Apply Leave"]
+    },
+    {
+      "tag": "ytd_statement",
+      "patterns": [
+        "I need my YTD statement",
+        "Year to date salary",
+        "Show my total earnings for the year",
+        "Annual salary statement"
+      ],
+      "responses": [
+        "To view Year-to-Date earnings:\n1. Go to **Salary > YTD Reports**.\n2. View your **Gross Earnings** and **Deductions** for the current financial year."
+      ]
+    },
+    {
+      "tag": "cancel_leave",
+      "patterns": [
+        "I want to cancel my leave",
+        "Delete leave application",
+        "How to withdraw leave?",
+        "Cancel my day off"
+      ],
+      "responses": [
+        "To cancel or withdraw a leave:\n1. Go to **Leave > Leave Information > My Leave**.\n2. Find the **Pending** leave application in the list.\n3. Click **Withdraw** or **Cancel**."
+      ]
+    },
+    {
+      "tag": "attendance_check",
+      "patterns": [
+        "Check my attendance",
+        "Was I marked present yesterday?",
+        "Show my swipe times",
+        "Attendance history"
+      ],
+      "responses": [
+        "To check your logs:\n1. Navigate to **Attendance > Attendance Info**.\n2. Here you can view your **Clock-in/out** timings and **Present/Absent** status."
+      ]
+    },    
+    {
+      "tag": "pf_details",
+      "patterns": [
+        "What is my PF number?",
+        "Where is my UAN?",
+        "Provident fund details",
+        "PF balance"
+      ],
+      "responses": [
+        "You can find PF/UAN details here:\n1. At the bottom of your **Payslip**.\n2. Or go to **Employee > Information > Bank & PF**."
+      ]
     }
   ]
 }

@@ -8,6 +8,7 @@ import random
 import json
 import pickle
 import os
+import difflib  # <--- NEW: Import for spelling correction
 
 stemmer = LancasterStemmer()
 
@@ -21,12 +22,24 @@ except LookupError:
 with open("intents.json") as file:
     data = json.load(file)
 
+# --- NEW: Build Raw Vocabulary for Spell Checker ---
+# We need a list of "correct" words (unstemmed) to check against.
+raw_vocabulary = []
+for intent in data["intents"]:
+    for pattern in intent["patterns"]:
+        # Tokenize and add to list
+        wrds = nltk.word_tokenize(pattern)
+        raw_vocabulary.extend([w.lower() for w in wrds])
+# Remove duplicates
+raw_vocabulary = sorted(list(set(raw_vocabulary)))
+# ---------------------------------------------------
+
 try:
     # 1. Try to load the processed data
     with open("data.pickle", "rb") as f:
         words, labels, training, output = pickle.load(f)
     
-    # 2. CRITICAL FIX: Load the saved model if data exists
+    # 2. Load the saved model
     model = load_model("chatbot_model.keras")
     print("Data and Model loaded successfully.")
 
@@ -107,11 +120,37 @@ def bag_of_words(s, words):
                 bag[i] = 1
     return np.array(bag)
 
-def get_response(msg):
-    # Prepare input
-    input_data = np.array([bag_of_words(msg, words)])
+# --- NEW: Auto-Correct Function ---
+def correct_spelling(sentence):
+    sentence_words = nltk.word_tokenize(sentence.lower())
+    corrected_sentence = []
     
-    # Predict
+    for word in sentence_words:
+        # Check if word is already correct (in raw vocab)
+        if word in raw_vocabulary:
+            corrected_sentence.append(word)
+        else:
+            # Find closest match
+            # n=1 (find 1 best match), cutoff=0.75 (must be 75% similar)
+            matches = difflib.get_close_matches(word, raw_vocabulary, n=1, cutoff=0.75)
+            if matches:
+                # Use the matched word
+                corrected_sentence.append(matches[0])
+            else:
+                # Keep original if no match found
+                corrected_sentence.append(word)
+                
+    return " ".join(corrected_sentence)
+
+def get_response(msg):
+    # 1. Apply Auto-Correction
+    corrected_msg = correct_spelling(msg)
+    print(f"Original: {msg} -> Corrected: {corrected_msg}") # Debug print
+    
+    # 2. Prepare input
+    input_data = np.array([bag_of_words(corrected_msg, words)])
+    
+    # 3. Predict
     results = model.predict(input_data, verbose=0)
     results_index = np.argmax(results)
     tag = labels[results_index]
@@ -122,7 +161,7 @@ def get_response(msg):
             if tg['tag'] == tag:
                 responses = tg['responses']
                 img_path = tg.get('context_image')
-                video_path = tg.get('context_video') # Added video support
+                video_path = tg.get('context_video')
                 suggestions = tg.get('suggestions', [])
                 
                 return random.choice(responses), img_path, video_path, suggestions
