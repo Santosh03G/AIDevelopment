@@ -21,7 +21,7 @@
     {
       "tag": "apply_leave",
       "patterns": ["how to apply leave", "apply for sick leave", "leave application"],
-      "responses": ["To apply via the Web Portal:\n1. Go to **Leave > Leave Apply**.\n2. Select the **Leave Type** and dates.\n3. Enter a **Reason** and click **Submit**."],
+      "responses": ["To apply for leave:\n1. Log in to the **greytHR** portal.\n2. Go to **Leave > Leave Apply**.\n3. Select the **Leave Type** and dates.\n4. Enter a **Reason** and click **Submit**."],
       "context_video": "leave_apply.mp4",
       "suggestions": ["Check leave balance", "Leave approval status"]
     },
@@ -34,27 +34,27 @@
         "Track leave application"
       ],
       "responses": [
-        "To check your leave status:\n1. Go to **Leave > Leave Information > My Leave**.\n2. Look at the **Status** column to see if it is **Pending**, **Approved**, or **Rejected**."
+        "To check your leave status:\n1. Log in to the **greytHR** portal.\n2. Go to **Leave > Leave Information > My Leave**.\n3. Look at the **Status** column to see if it is **Pending**, **Approved**, or **Rejected**."
       ],
       "suggestions": ["Cancel leave", "Check leave balance"]
     },
     {
       "tag": "apply_od",
       "patterns": ["how to apply od", "apply for on duty", "regularize attendance"],
-      "responses": ["To apply for OD:\n1. Go to **Attendance > Regularization**.\n2. Select the **Date**.\n3. Select **On Duty** in the Reason field.\n4. Click **Apply**."],
+      "responses": ["To apply for OD:\n1. Log in to the **greytHR** portal.\n2. Go to **Attendance > Regularization**.\n3. Select the **Date**.\n4. Select **On Duty** in the Reason field.\n5. Click **Apply**."],
       "suggestions": ["Check leave balance", "How to apply leave?"]
     },
     {
       "tag": "download_payslip",
       "patterns": ["how to download payslip", "where is my salary slip"],
-      "responses": ["To download your payslip:\n1. Navigate to **Salary > Payslips**.\n2. Select the **Month**.\n3. Click the **Download** icon."],
+      "responses": ["To download your payslip:\n1. Log in to the **greytHR** portal.\n2. Navigate to **Salary > Payslips**.\n3. Select the **Month**.\n4. Click the **Download** icon."],
       "context_image": "images/download_payslip.png",
       "suggestions": ["Check Leave Balance"]
     },
     {
       "tag": "check_leave_balance",
       "patterns": ["check leave balance", "my leave balance"],
-      "responses": ["To check your balance:\n1. Go to **Leave > Balances**.\n2. View your **Available**, **Consumed**, and **Granted** leaves."],
+      "responses": ["To check your balance:\n1. Log in to the **greytHR** portal.\n2. Go to **Leave > Balances**.\n3. View your **Available**, **Consumed**, and **Granted** leaves."],
       "context_image": "images/leave_balance.png",
       "suggestions": ["Apply Leave"]
     },
@@ -67,7 +67,7 @@
         "Annual salary statement"
       ],
       "responses": [
-        "To view Year-to-Date earnings:\n1. Go to **Salary > YTD Reports**.\n2. View your **Gross Earnings** and **Deductions** for the current financial year."
+        "To view Year-to-Date earnings:\n1. Log in to the **greytHR** portal.\n2. Go to **Salary > YTD Reports**.\n3. View your **Gross Earnings** and **Deductions** for the current financial year."
       ]
     },
     {
@@ -79,8 +79,22 @@
         "Cancel my day off"
       ],
       "responses": [
-        "To cancel or withdraw a leave:\n1. Go to **Leave > Leave Information > My Leave**.\n2. Find the **Pending** leave application in the list.\n3. Click **Withdraw** or **Cancel**."
+        "To cancel or withdraw a leave:\n1. Log in to the **greytHR** portal.\n2. Go to **Leave > Leave Information > My Leave**.\n3. Find the **Pending** leave application in the list.\n4. Click **Withdraw** or **Cancel**."
       ]
+    },
+    {
+      "tag": "view_holiday_list",
+      "patterns": [
+        "show me the holiday list",
+        "list of holidays 2026",
+        "company holidays",
+        "when is the next holiday",
+        "download holiday calendar"
+      ],
+      "responses": [
+        "To view the Holiday List:\n1. Log in to **Teamlink**.\n2. Navigate to **HR > Policies**.\n3. On the left sidebar, click on **02 Holidays 2026**."
+      ],
+      "suggestions": ["Check Leave Balance", "How to apply leave"]
     },
     {
       "tag": "attendance_check",
@@ -91,8 +105,40 @@
         "Attendance history"
       ],
       "responses": [
-        "To check your logs:\n1. Navigate to **Attendance > Attendance Info**.\n2. Here you can view your **Clock-in/out** timings and **Present/Absent** status."
+        "To check your logs:\n1. Log in to the **greytHR** portal.\n2. Navigate to **Attendance > Attendance Info**.\n3. Here you can view your **Clock-in/out** timings and **Present/Absent** status."
       ]
+    },
+    {
+      "tag": "payslip_correction",
+      "patterns": [
+        "payslip correction",
+        "wrong salary amount",
+        "error in my payslip",
+        "correct my payslip",
+        "salary mismatch",
+        "raise ticket for payslip",
+        "teamlink"
+      ],
+      "responses": [
+        "Payslip corrections are handled via **Teamlink**:\n1. Log in to the **Teamlink** portal http://teamlink/Helpdesk/public/en/employee/login .\n2. Submit a new ticket regarding **Payslip Issues**."
+      ],
+      "suggestions": ["Check Leave Balance"]
+    },
+    {
+      "tag": "leave_visibility_issue",
+      "patterns": [
+        "cannot see my leave details",
+        "leave balance is blank",
+        "unable to view leave history",
+        "leave page is not loading",
+        "error in leave page",
+        "cant access leave info",
+        "my leaves are not showing"
+      ],
+      "responses": [
+        "If your leave page is blank, please report it:\n1. Log in to the **Teamlink** portal http://teamlink/Helpdesk/public/en/employee/login .\n2. Raise a ticket under **HR Support** > **Portal Issues**."
+      ],
+      "suggestions": ["How to apply leave", "Holiday List"]
     },    
     {
       "tag": "pf_details",
@@ -103,8 +149,74 @@
         "PF balance"
       ],
       "responses": [
-        "You can find PF/UAN details here:\n1. At the bottom of your **Payslip**.\n2. Or go to **Employee > Information > Bank & PF**."
+        "To find your PF details:\n1. Log in to the **greytHR** portal.\n2. Go to **Employee > Information > Bank & PF**.\n(You can also find this at the bottom of your **Payslip**)."
       ]
+    },
+    {
+      "tag": "view_holiday_list",
+      "patterns": [
+        "show me the holiday list",
+        "list of holidays 2026",
+        "company holidays",
+        "when is the next holiday",
+        "download holiday calendar"
+      ],
+      "responses": [
+        "To view the Holiday List:\n1. Log in to **Teamlink**.\n2. Navigate to **HR > Policies**.\n3. On the left sidebar, click on **02 Holidays 2026**."
+      ],
+      "suggestions": ["Check Leave Balance", "How to apply leave"]
+    },
+    {
+      "tag": "view_leave_policy",
+      "patterns": [
+        "show me the leave policy",
+        "leave rules pdf",
+        "saazvat leave policy",
+        "policy for sick leave",
+        "casual leave rules",
+        "policy for leaves"
+      ],
+      "responses": [
+        "To read the Leave Policy:\n1. Log in to **Teamlink**.\n2. Navigate to **HR > Policies**.\n3. In the sidebar list, select **03 SAAZVAT-Leave-Policy** http://teamlink/hr/hrpolicies/."
+      ],
+      "suggestions": ["Check Leave Balance", "Apply Leave"]
+    },
+    {
+      "tag": "view_overtime_policy",
+      "patterns": [
+        "working hour policy",
+        "overtime rules",
+        "OT policy",
+        "office timings",
+        "work hour and overtime policy",
+        "how is overtime calculated"
+      ],
+      "responses": [
+        "To view Working Hours & Overtime rules:\n1. Log in to **Teamlink**.\n2. Navigate to **HR > Policies**.\n3. In the sidebar, click on **05 SAAZVAT-Working-Hour-&-Overtime-Policy** http://teamlink/hr/hrpolicies/."
+      ],
+      "suggestions": ["Check Attendance", "Regularize Attendance"]
+    },
+    {
+      "tag": "view_code_of_conduct",
+      "patterns": ["code of conduct", "company ethics policy", "conduct rules"],
+      "responses": ["To view the Code of Conduct:\n1. Log in to **Teamlink**.\n2. Navigate to **HR > Policies**.\n3. Select **01 Code-of-Conduct-Policy** from the sidebar.http://teamlink/hr/hrpolicies/"],
+      "suggestions": ["View Leave Policy"]
+    },
+    {
+      "tag": "payslip_correction",
+      "patterns": [
+        "payslip correction",
+        "wrong salary amount",
+        "error in my payslip",
+        "correct my payslip",
+        "salary mismatch",
+        "raise ticket for payslip",
+        "teamlink"
+      ],
+      "responses": [
+        "Payslip corrections are handled via **Teamlink**:\n1. Log in to the **Teamlink** portal http://teamlink/Helpdesk/public/en/employee/login.\n2. Submit a new ticket regarding **Payslip Issues**."
+      ],
+      "suggestions": ["Download Payslip", "Check Leave Balance"]
     }
   ]
 }
