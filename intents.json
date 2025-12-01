@@ -16,14 +16,13 @@
       "tag": "bot_identity",
       "patterns": ["Who are you?", "What is your name?", "What can you do?"],
       "responses": ["I am **SzAi**, your HR Assistant."],
-      "suggestions": ["How to apply leave?", "Download Payslip", "Check Leave Balance"]
+      "suggestions": ["How to apply leave?", "Check Leave Balance"]
     },
     {
       "tag": "apply_leave",
       "patterns": ["how to apply leave", "apply for sick leave", "leave application"],
       "responses": ["To apply for leave:\n1. Log in to the **greytHR** portal.\n2. Go to **Leave > Leave Apply**.\n3. Select the **Leave Type** and dates.\n4. Enter a **Reason** and click **Submit**."],
-      "context_video": "leave_apply.mp4",
-      "suggestions": ["Check leave balance", "Leave approval status"]
+      "suggestions": ["Video Guide","Check leave balance", "Leave approval status"]
     },
     {
       "tag": "leave_status",
@@ -46,7 +45,7 @@
     },
     {
       "tag": "download_payslip",
-      "patterns": ["how to download payslip", "where is my salary slip"],
+      "patterns": ["how to download payslip", "where is my salary slip","How to get my salary slip","where can i download my payslip"],
       "responses": ["To download your payslip:\n1. Log in to the **greytHR** portal.\n2. Navigate to **Salary > Payslips**.\n3. Select the **Month**.\n4. Click the **Download** icon."],
       "context_image": "images/download_payslip.png",
       "suggestions": ["Check Leave Balance"]
@@ -109,22 +108,6 @@
       ]
     },
     {
-      "tag": "payslip_correction",
-      "patterns": [
-        "payslip correction",
-        "wrong salary amount",
-        "error in my payslip",
-        "correct my payslip",
-        "salary mismatch",
-        "raise ticket for payslip",
-        "teamlink"
-      ],
-      "responses": [
-        "Payslip corrections are handled via **Teamlink**:\n1. Log in to the **Teamlink** portal http://teamlink/Helpdesk/public/en/employee/login .\n2. Submit a new ticket regarding **Payslip Issues**."
-      ],
-      "suggestions": ["Check Leave Balance"]
-    },
-    {
       "tag": "leave_visibility_issue",
       "patterns": [
         "cannot see my leave details",
@@ -153,6 +136,19 @@
       ]
     },
     {
+      "tag": "video_guide",
+      "patterns": [
+        "show me a video guid",
+        "guide me through a video",
+        "give me a video walk through",
+        "PF balance"
+      ],
+      "responses": [
+        "Here is the video walkthrough"
+      ],
+      "context_video": "leave_apply.mp4"
+    },
+    {
       "tag": "view_holiday_list",
       "patterns": [
         "show me the holiday list",
@@ -162,7 +158,7 @@
         "download holiday calendar"
       ],
       "responses": [
-        "To view the Holiday List:\n1. Log in to **Teamlink**.\n2. Navigate to **HR > Policies**.\n3. On the left sidebar, click on **02 Holidays 2026**."
+        "To view the Holiday List:\n1. Log in to **Teamlink**.\n2. Navigate to **HR > Policies**.\n3. On the left sidebar, click on **02 Holidays 2026** http://teamlink/hr/hrpolicies/.."
       ],
       "suggestions": ["Check Leave Balance", "How to apply leave"]
     },
@@ -214,9 +210,24 @@
         "teamlink"
       ],
       "responses": [
-        "Payslip corrections are handled via **Teamlink**:\n1. Log in to the **Teamlink** portal http://teamlink/Helpdesk/public/en/employee/login.\n2. Submit a new ticket regarding **Payslip Issues**."
+        "Payslip corrections are handled via **Teamlink**:\n1. Log in to the **Teamlink** portal http://teamlink/Helpdesk/public/en/employee/login. \n3 Submit a new ticket regarding **Payslip Issues**."
       ],
-      "suggestions": ["Download Payslip", "Check Leave Balance"]
+      "suggestions": ["Check Leave Balance"]
+    },
+    {
+      "tag": "leave_entitlement_policy",
+      "patterns": [
+        "How many leaves do I get per month?",
+        "What is the leave policy for probation?",
+        "Leave count for contract employees",
+        "Leaves for permanent employees",
+        "Leave accrual rate",
+        "How many holidays am I allowed to take?",
+        "Difference in leaves for probation and permanent"
+      ],
+      "responses": [
+        "Your leave entitlement depends on your employment status: \n1. **Permanent Employees**: 2 leaves per month.\n2. **Probation & Contract Employees**: 1 leave per month."
+      ]
     }
   ]
 }

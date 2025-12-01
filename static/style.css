@@ -1,11 +1,16 @@
 /* =========================================
-   SzAi Final UI — Complete Style
+   SzAi Final UI — Blue Theme (Complete)
    ========================================= */
 :root {
-  --brand-red: #bf2630;
-  --brand-dark: #8E1B22;
-  --bg-dots: #ffebeb;
+  /* Brand Colors - Blue Theme */
+  --brand-primary: #007bff;  /* Standard UI Blue */
+  --brand-dark: #0056b3;     /* Darker Blue for Gradients/Hover */
+  --bg-dots: #eef6ff;        /* Light Blue for Dotted Background */
+  
+  /* Status Colors */
   --online-green: #2ecc71;
+  
+  /* Text Colors */
   --text-main: #333;
   --text-muted: #888;
 }
@@ -34,9 +39,10 @@ body {
    The Floating "Ask SzAi" Button
    ----------------------- */
 .sz-chat-btn {
-  background: var(--brand-red);
+  background: var(--brand-primary);
   color: white;
   border: none;
+  /* Padding: Top Right Bottom Left */
   padding: 6px 20px 6px 6px; 
   border-radius: 50px;
   font-family: 'Inter', sans-serif;
@@ -46,13 +52,15 @@ body {
   display: flex;
   align-items: center;
   gap: 12px;
-  box-shadow: 0 4px 15px rgba(191, 38, 48, 0.4);
+  /* Blue Shadow */
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4);
   transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .sz-chat-btn:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 25px rgba(191, 38, 48, 0.5);
+  /* Deeper Blue Shadow on Hover */
+  box-shadow: 0 8px 25px rgba(0, 123, 255, 0.5);
 }
 
 .sz-chat-btn:active {
@@ -73,7 +81,6 @@ body {
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* Button Image */
 .sz-btn-img {
   width: 100%;
   height: 100%;
@@ -133,7 +140,7 @@ body {
   gap: 12px;
 }
 
-/* Header Avatar Circle with Red Border */
+/* Header Avatar Circle with Blue Border */
 .sz-avatar-wrap {
   position: relative;
   width: 42px;
@@ -142,7 +149,8 @@ body {
   border-radius: 50%;
   padding: 2px;
   box-sizing: border-box;
-  border: 2px solid var(--brand-red); /* Red Border */
+  /* Blue Border */
+  border: 2px solid var(--brand-primary);
 }
 
 .sz-header-img {
@@ -195,7 +203,7 @@ body {
   align-items: center;
   justify-content: center;
 }
-.sz-icon-btn:hover { background: #f5f5f5; color: var(--brand-red); }
+.sz-icon-btn:hover { background: #f5f5f5; color: var(--brand-primary); }
 
 /* -----------------------
    Chat Body
@@ -205,7 +213,7 @@ body {
   overflow-y: auto;
   padding: 20px;
   background-color: #fff;
-  /* Dotted Pattern */
+  /* Light Blue Dotted Pattern */
   background-image: radial-gradient(var(--bg-dots) 2px, transparent 2px);
   background-size: 20px 20px;
   display: flex;
@@ -239,8 +247,9 @@ body {
   word-wrap: break-word;
 }
 
+/* User Bubble Gradient (Blue) */
 .sz-bubble-user {
-  background: linear-gradient(135deg, var(--brand-red), var(--brand-dark));
+  background: linear-gradient(135deg, var(--brand-primary), var(--brand-dark));
   color: #fff;
   border-bottom-right-radius: 4px;
 }
@@ -263,7 +272,7 @@ body {
 }
 .sz-chat-img:hover { transform: scale(1.02); }
 
-/* Suggestions Chips */
+/* Suggestions Chips (Blue) */
 .sz-suggestions {
   display: flex;
   flex-wrap: wrap;
@@ -273,8 +282,8 @@ body {
 
 .sz-chip {
   background: #fff;
-  border: 1px solid var(--brand-red);
-  color: var(--brand-red);
+  border: 1px solid var(--brand-primary);
+  color: var(--brand-primary);
   padding: 8px 16px;
   border-radius: 20px;
   font-size: 13px;
@@ -284,10 +293,10 @@ body {
 }
 
 .sz-chip:hover {
-  background: var(--brand-red);
+  background: var(--brand-primary);
   color: #fff;
   transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(191, 38, 48, 0.2);
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
 }
 
 /* -----------------------
@@ -310,8 +319,8 @@ body {
 }
 
 .sz-input-container:focus-within {
-  border-color: var(--brand-red);
-  box-shadow: 0 4px 12px rgba(191, 38, 48, 0.08);
+  border-color: var(--brand-primary);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.1);
 }
 
 .sz-chat-input {
@@ -323,10 +332,23 @@ body {
   color: #333;
 }
 
+/* Microphone Button */
+.sz-mic-btn {
+  background: transparent;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  font-size: 16px;
+  margin-right: 8px;
+  transition: color 0.2s;
+}
+.sz-mic-btn:hover { color: var(--brand-primary); }
+
+/* Send Button */
 .sz-send-btn {
   width: 40px;
   height: 40px;
-  background: var(--brand-red);
+  background: var(--brand-primary);
   color: #fff;
   border: none;
   border-radius: 50%;
@@ -338,6 +360,17 @@ body {
 }
 .sz-send-btn:hover { transform: scale(1.1); }
 .sz-send-btn:disabled { background: #ccc; cursor: default; transform: none; }
+
+/* Listening Pulse Animation */
+@keyframes micPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+.sz-icon-btn.listening {
+  animation: micPulse 1.5s infinite;
+  color: var(--brand-primary);
+}
 
 /* -----------------------
    Modern Video Player
@@ -398,21 +431,22 @@ body {
 
 #sz-popup-video { width: 100%; height: 100%; display: block; }
 
+/* Blue Play Button */
 #sz-center-play {
   position: absolute;
   width: 72px; height: 72px;
   border-radius: 50%;
-  background: rgba(191, 38, 48, 0.9);
+  background: rgba(0, 123, 255, 0.9);
   color: white;
   border: none;
   font-size: 24px;
   cursor: pointer;
   display: none;
   align-items: center; justify-content: center;
-  box-shadow: 0 0 30px rgba(191, 38, 48, 0.4);
+  box-shadow: 0 0 30px rgba(0, 123, 255, 0.4);
   animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-#sz-center-play:hover { transform: scale(1.1); background: #d9363e; }
+#sz-center-play:hover { transform: scale(1.1); background: #0056b3; }
 
 #sz-controls {
   position: absolute;
@@ -441,7 +475,7 @@ body {
 }
 #sz-progress-played {
   height: 100%; width: 0;
-  background: var(--brand-red);
+  background: var(--brand-primary);
   position: relative;
 }
 #sz-progress-buffer {
@@ -522,7 +556,7 @@ body {
   color: #f1f1f1; font-size: 40px; font-weight: bold;
   cursor: pointer; z-index: 100002; transition: 0.3s;
 }
-.sz-close-img:hover { color: var(--brand-red); }
+.sz-close-img:hover { color: var(--brand-primary); }
 
 .sz-img-controls {
   position: absolute; bottom: 30px; left: 50%;
